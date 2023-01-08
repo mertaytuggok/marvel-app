@@ -1,0 +1,19 @@
+.mainHeadder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:2rem;
+    height: 4rem;
+    background: linear-gradient(to left, #202020 20%,#f0141e );
+    .headerText{
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.4rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    @media only screen and (max-width: 425px) {
+        .headerText{
+            font-size: 1.2rem;
+        }
+    }
+}

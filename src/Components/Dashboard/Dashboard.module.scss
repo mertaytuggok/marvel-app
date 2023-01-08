@@ -1,0 +1,45 @@
+.mainDashboard{
+    margin: 2rem 5rem;
+    padding: 1rem 2rem;
+    height: 100%;
+    border: 1px solid gray; 
+    border-radius: .8rem;
+    box-sizing: border-box;
+    .infoCard{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        align-items: center;
+        gap: 2rem;
+        font-size: 1.2rem;
+        width: 100%;
+        background-color: aliceblue;
+    }
+    @media only screen and (max-width: 425px) {
+        .infoCard{
+            font-size: 1rem; 
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+    .card{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        border: 1px solid gray;
+        border-radius: .8rem;
+        padding: .2rem .5rem;
+    }  
+}
+@media only screen and (max-width: 425px) {
+    .mainDashboard{
+        padding: .4rem .6rem;
+        margin: 1rem 1rem;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .mainDashboard{
+        margin: 1rem 1rem;
+    }
+}
