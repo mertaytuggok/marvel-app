@@ -10,8 +10,6 @@ export const Comics = () => {
     dispatch(fetchComics());
   }, []);
 
-  console.log(comics);
-
   return (
     <div className={styles.mainComics}>
       <div className={styles.infoCardComics}>
