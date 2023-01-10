@@ -1,19 +1,32 @@
-.mainHeadder{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap:2rem;
-    height: 4rem;
-    background: linear-gradient(to left, #202020 20%,#f0141e );
-    .headerText{
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.4rem;
-        font-weight: 600;
-        text-decoration: none;
-    }
-    @media only screen and (max-width: 425px) {
-        .headerText{
-            font-size: 1.2rem;
-        }
-    }
+.topHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 3.1875rem;
+  background: #202020;
+  text-decoration: none;
+}
+.bottomHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid gray;
+  box-sizing: border-box;
+  height: 2.5rem;
+  gap: 2rem;
+  background: #202020;
+}
+.headerText {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 425px) {
+  .headerText {
+    font-size: 1.2rem;
+  }
 }
