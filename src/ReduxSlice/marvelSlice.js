@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const baseUrl = process.env.REACT_APP_API_BASE_URL;
+const apiKey = process.env.REACT_APP_API_KEY;
+const hash = process.env.REACT_APP_API_HASH;
 export const fetchCharaters = createAsyncThunk(
   "characters/getCharacters",
   async () => {
