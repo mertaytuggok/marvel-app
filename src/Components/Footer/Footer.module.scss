@@ -1,0 +1,41 @@
+.footerMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rem;
+  background-color: #202020;
+  color: white;
+  padding: 5rem 1.875rem;
+  .footerMainText {
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+  }
+  .centerText {
+    display: flex;
+    font-size: 1rem;
+    font-weight: 500;
+    gap: 6rem;
+    .centerLeft {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      cursor: pointer;
+    }
+  }
+  .Logo {
+    width: 5rem;
+  }
+  .bottomText {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    color: #767676;
+    :hover {
+      color: white;
+    }
+    span {
+      cursor: pointer;
+    }
+  }
+}
