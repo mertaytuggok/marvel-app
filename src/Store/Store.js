@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import charactersSlice from "../ReduxSlice/characterSlice";
+import marvelSlice from "../ReduxSlice/marvelSlice";
 
 export const Store = configureStore({
   reducer: {
-    characters: charactersSlice,
+    marvel: marvelSlice,
   },
 });
