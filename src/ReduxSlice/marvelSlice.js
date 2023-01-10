@@ -5,14 +5,14 @@ export const fetchCharaters = createAsyncThunk(
   "characters/getCharacters",
   async () => {
     const res = await axios(
-      `${process.env.REACT_APP_API_BASE_URL}/v1/public/characters?limit=55&ts=1&apikey=${process.env.REACT_APP_API_KEY}&hash=${process.env.REACT_APP_API_HASH}`
+      `https://gateway.marvel.com:443/v1/public/characters?limit=55&ts=1&apikey=2af4b4a2bfad80f5782cf0036e849d6c&hash=ec590c972daa14a7d1b022799e7c53dd`
     );
     return res.data;
   }
 );
 export const fetchComics = createAsyncThunk("comics/getComics", async () => {
   const res = await axios(
-    `${process.env.REACT_APP_API_BASE_URL}/v1/public/comics?ts=1&apikey=${process.env.REACT_APP_API_KEY}&hash=${process.env.REACT_APP_API_HASH}`
+    `https://gateway.marvel.com:443/v1/public/comics?ts=1&apikey=2af4b4a2bfad80f5782cf0036e849d6c&hash=ec590c972daa14a7d1b022799e7c53dd`
   );
   return res.data;
 });

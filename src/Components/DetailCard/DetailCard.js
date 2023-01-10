@@ -11,15 +11,13 @@ export const DetailCard = () => {
 
   useEffect(() => {
     axios(
-      `${process.env.REACT_APP_API_BASE_URL}/v1/public/characters/${id}?ts=1&apikey=${process.env.REACT_APP_API_KEY}&hash=${process.env.REACT_APP_API_HASH}`
+      `https://gateway.marvel.com:443/v1/public/characters/${id}?ts=1&apikey=2af4b4a2bfad80f5782cf0036e849d6c&hash=ec590c972daa14a7d1b022799e7c53dd`
     )
       .then((res) => res.data)
       .then((data) => setChar(data.data.results))
       .finally(() => setLoading(false));
-  }, [id]);
-  useEffect(() => {
     axios(
-      `${process.env.REACT_APP_API_BASE_URL}/v1/public/characters/${id}/comics?ts=1&apikey=${process.env.REACT_APP_API_KEY}&hash=${process.env.REACT_APP_API_HASH}`
+      `https://gateway.marvel.com:443/v1/public/characters/${id}/comics?ts=1&apikey=2af4b4a2bfad80f5782cf0036e849d6c&hash=ec590c972daa14a7d1b022799e7c53dd`
     )
       .then((res) => res.data)
       .then((data) => setComics(data.data.results))
