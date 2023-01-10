@@ -2,20 +2,50 @@
   margin: 2rem 5rem;
   padding: 1rem 2rem;
   height: 100%;
-  border: 1px solid gray;
-  border-radius: 0.8rem;
-  box-sizing: border-box;
-  background: #202020;
-
   .infoCard {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
     align-items: center;
-    background: #202020;
-    gap: 2rem;
+    gap: 1.5rem;
     font-size: 1.2rem;
-    width: 100%;
   }
+  .linkText {
+    display: flex;
+    flex-direction: column;
+    width: 210px;
+    text-decoration: none;
+    :hover {
+      color: black;
+    }
+  }
+
+  .cardText {
+    border-top: 5px solid red;
+    height: 110px;
+    width: 180px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 1.5rem 1.06rem 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+  }
+  .cardText:hover {
+    background-color: red;
+    transition: 1000ms;
+  }
+
+  .image {
+    width: 224px;
+    height: 336px;
+  }
+  .grayText {
+    color: #bbbb;
+  }
+}
+/*
+ 
   @media only screen and (max-width: 425px) {
     .infoCard {
       font-size: 1rem;
@@ -25,8 +55,7 @@
   }
   .card {
     display: flex;
-    width: 100%;
-    min-height: 20rem;
+    width: 22.1875rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -55,4 +84,4 @@
   .mainDashboard {
     margin: 1rem 1rem;
   }
-}
+}*/
