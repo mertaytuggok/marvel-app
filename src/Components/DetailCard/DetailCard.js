@@ -1,42 +1,39 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { fetchDetailCharacter } from "../../ReduxSlice/marvelSlice";
 import styles from "./DetailCard.module.scss";
+import { Loading } from "../Loading/Loading.js";
+import { Error } from "../Error/Error";
 
 export const DetailCard = () => {
-  const [char, setChar] = useState(null);
-  const [comics, setComics] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [comics, setComics] = useState();
+  const detailCharacter = useSelector(
+    (state) => state.marvel.detailCharacter.data
+  );
+  const isLoading = useSelector((state) => state.marvel.isLoading);
+  const error = useSelector((state) => state.marvel.error);
+  const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
-    axios(
-      `https://gateway.marvel.com:443/v1/public/characters/${id}?ts=1&apikey=2af4b4a2bfad80f5782cf0036e849d6c&hash=ec590c972daa14a7d1b022799e7c53dd`
-    )
-      .then((res) => res.data)
-      .then((data) => setChar(data.data.results))
-      .finally(() => setLoading(false));
-    axios(
-      `https://gateway.marvel.com:443/v1/public/characters/${id}/comics?ts=1&apikey=2af4b4a2bfad80f5782cf0036e849d6c&hash=ec590c972daa14a7d1b022799e7c53dd`
-    )
-      .then((res) => res.data)
-      .then((data) => setComics(data.data.results))
-      .finally(() => setLoading(false));
+    dispatch(fetchDetailCharacter(id));
+    setComics(detailCharacter?.results[0].comics.items);
   }, [id]);
-
   return (
     <div>
       {" "}
-      {loading && <div>Loading..</div>}
-      {char && (
-        <>
+      {isLoading && <Loading />}
+      {error && <Error />}
+      {detailCharacter?.results.map((item) => (
+        <div key={item.id}>
           <div className={styles.detailTopCard}>
             <img
-              alt={char[0].name}
+              alt={item.name}
               className={styles.image}
-              src={`${char[0].thumbnail.path}.${char[0].thumbnail.extension}`}
+              src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
             />{" "}
-            <div className={styles.charName}>{char[0].name}</div>{" "}
+            <div className={styles.charName}>{item.name}</div>{" "}
           </div>
           <div className={styles.detailBottomCard}>
             <div className={styles.leftText}>
@@ -45,12 +42,12 @@ export const DetailCard = () => {
             </div>
             <div className={styles.Description}>
               {comics?.map((item) => (
-                <div key={item.id}>{item.title}</div>
+                <div key={item.id}>{item.name}</div>
               ))}
             </div>
           </div>
-        </>
-      )}
+        </div>
+      ))}
     </div>
   );
 };
