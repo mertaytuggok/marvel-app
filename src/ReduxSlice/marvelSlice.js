@@ -1,9 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_API_BASE_URL;
-const apiKey = process.env.REACT_APP_API_KEY;
-const hash = process.env.REACT_APP_API_HASH;
 export const fetchCharaters = createAsyncThunk(
   "characters/getCharacters",
   async () => {
@@ -19,12 +16,25 @@ export const fetchComics = createAsyncThunk("comics/getComics", async () => {
   );
   return res.data;
 });
+
+export const fetchDetailCharacter = createAsyncThunk(
+  "detailCharatcer/getDetailCharactar",
+  async (id) => {
+    const res = await axios(
+      `https://gateway.marvel.com:443/v1/public/characters/${id}?ts=1&apikey=2af4b4a2bfad80f5782cf0036e849d6c&hash=ec590c972daa14a7d1b022799e7c53dd`
+    );
+    return res.data;
+  }
+);
+
 export const marvelSlice = createSlice({
   name: "marvel",
   initialState: {
     character: [],
     comic: [],
+    detailCharacter: [],
     isLoading: false,
+    error: false,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -40,7 +50,6 @@ export const marvelSlice = createSlice({
       state.isLoading = false;
       state.error = action.error.message;
     });
-
     // get comics
     builder.addCase(fetchComics.pending, (state, action) => {
       state.isLoading = true;
@@ -50,6 +59,17 @@ export const marvelSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(fetchComics.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message;
+    }); // get detailCard
+    builder.addCase(fetchDetailCharacter.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(fetchDetailCharacter.fulfilled, (state, action) => {
+      state.detailCharacter = action.payload;
+      state.isLoading = false;
+    });
+    builder.addCase(fetchDetailCharacter.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error.message;
     });
